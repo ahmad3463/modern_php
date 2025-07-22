@@ -14,16 +14,28 @@
     $subjects = [
         "computer science",
         "software engnieerning",
-        "DAta science"
+        "Data science"
         ]
     ?>
 
 <ul>
     <?php
-    foreach ($subjects as  $subject) {
-       echo "<li> helo world </li>";
-    }
+    // foreach ($subjects as  $subject) {
+    // //    echo "<li> helo world </li>";
+
+    //    echo "<li> $subject  </li>";
+
+    // }
+
     ?>
+    </ul>
+    <ul>
+    <?php foreach ($subjects as $subject) : ?>
+
+            <li><?= $subject ?></li>
+
+        <?php endforeach ?>
+
 </ul>
 </body>
 </html>
