@@ -30,10 +30,7 @@
 
     <ul>
         <?php foreach($books as $book) :?>
-
-        <?php if(){
             
-        }?>
         <li><?= $book['author']?></li>
 
         <?php endforeach?>
