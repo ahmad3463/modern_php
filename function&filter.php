@@ -10,40 +10,44 @@
 <body>
 
     <?php
-    $books = [
+    $items = [
         [
             "name" => "The Subtle Art of not giving a F**k",
             "author" => "willim son",
-            "releaseYear" => "2001"
+            "releaseYear" => 2001
         ],
         [
             "name" => "The Art Of Laziness",
             "author" => "willim son",
-            "releaseYear" => "1884"
+            "releaseYear" => 1884
         ],
         [
             "name" => "Dopamine Nation",
             "author" => "Anna Lembky",
-            "releaseYear" => "198"
+            "releaseYear" => 1883
         ]
         ];
 
-            function filterByAuthor($books , $author){
-                $filterBooks = [];
+              function filter($items ,$fn){
+                $filteredItems = [];
 
-                foreach($books as $book){
-                    if($book['author'] === 'willim son'){
-                        $filterBooks[] = $book;
+                foreach($items as $item){
+                    if($fn($item)){
+                        $filteredItems[] = $item;
                     }
 
                 }
-                return $filterBooks;
+                return  $filteredItems;
             }
+
+            $filterByAuthor = filter($items , function($book){
+                return $book['releaseYear'] <= 2000;
+            } );
         
         ?>
 
     <ul>
-        <?php foreach (filterByAuthor($books, 'willim son')  as $book): ?>
+        <?php foreach ($filterByAuthor  as $book): ?>
                 <?php if($book['author'] === 'willim son') : ?>
             <li>
                 <?= $book['name'] ?> (<?= $book['releaseYear']?>)
