@@ -27,6 +27,7 @@ if ($_POST) {
     }
 
     if ($found) {
+        setcookie('username' , $userName , time() + 3600);
         header('Location: day10_challengedash.php');
         exit; // stop further code after redirect
     } else {

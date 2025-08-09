@@ -10,8 +10,11 @@
 
 <?php
 if ($_POST) {
-    $userName = $_POST['username'];
-    $userPassword = $_POST['userpassword'];
+    $userName = trim($_POST['username']);
+    $userPassword = trim($_POST['userpassword']);
+
+    $userNamePatern = "/^[A-Za-z0-9_]{5,20}$/";
+    $emailPattern = "/^[\w\.-]+@[\w\.-]+\.[a-z]{2,6}$/i";
 
     $newuser = $userName . "," . $userPassword;
 

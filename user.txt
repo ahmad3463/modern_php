@@ -7,4 +7,4 @@ ahmad,234
 hamza,343
 hamza,343
 abbas,khan
-Ahmad,khanali,khanali,khanali,khan
+
