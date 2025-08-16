@@ -1,3 +1,5 @@
+<?php include 'conn.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +15,15 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
+                <?php if(isset($_SESSION['message'])) : ?>
+                    <h6 class="alert alert-success"> <?= $_SESSION['message']?></h6>
+                    <?php session_unset()?>
+                    <?php endif?>
                 <div class="card  ">
                     <div class="card-head  ">
                         <h1>Crud PDO
 
-                            <a href="code.php" class="btn btn-primary float-end"> Add Student</a>
+                            <a href="add-student.php" class="btn btn-primary float-end"> Add Student</a>
                         </h1>
 
                     </div>
