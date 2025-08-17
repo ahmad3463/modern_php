@@ -27,6 +27,51 @@
                         </h1>
 
                     </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $query = "SELECT * FROM students";
+                            $statment = $conn->prepare($query);
+                            $statment->execute();
+                             
+                            $results = $statment->fetchAll(PDO::FETCH_OBJ);
+
+                            if($results){
+                                foreach($results as $result){
+                                    ?>
+                                    <tr>
+                                        <td><?= $result->ID?></td>
+                                        <td><?= $result->name?></td>
+                                        <td><?= $result->email?></td>
+                                        <td><?= $result->phone?></td>
+                                        <td><?= $result->course?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }else{
+                                ?>
+                                    <tr colspan="5">
+                                        <td>Result Not Found</td>
+                                    </tr>
+
+                                <?php
+                                
+                            };
+
+                            ?>
+                            
+                        </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
