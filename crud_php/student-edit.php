@@ -1,3 +1,4 @@
+<?= include "conn.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
             <div class="col-md-12">
                 <div class="card  ">
                     <div class="card-head  ">
-                        <h1>Crud PDO
+                        <h1>Crud PDO edit Student
 
                             <a href="index.php" class="btn btn-primary float-end"> view table</a>
                         </h1>
@@ -23,24 +24,43 @@
                     </div>
 
                     <div class="card-body">
+                        <?php
+                        if(isset($_GET['id'])){
+
+                            $student_id = $_GET['id'];
+
+                            $query = "SELECT * FROM students WHERE ID=:std_id";
+                            $statment = $conn->prepare($query);
+                            $data = [
+                                ':std_id' => $student_id
+                            ];
+                            $statment->execute($data);
+
+                            $results = $statment->fetch(PDO::FETCH_OBJ);
+                        }
+                        ?>
                         <form action="edit-code.php" method="POST">
                             <div class="mb-3">
+                                <label for="" class="form-label">student ID</label>
+                                <input type="name" class="form-control" value="<?= $results->ID ?>" name="stdID" >
+                            </div>
+                            <div class="mb-3">
                                 <label for="" class="form-label">student Name</label>
-                                <input type="name" class="form-control" name="stdName" >
+                                <input type="name" class="form-control" value="<?= $results->name ?>" name="stdName" >
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">email</label>
-                                <input type="email" class="form-control" name="stdEmail" >
+                                <input type="email" class="form-control" value="<?= $results->email ?>" name="stdEmail" >
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">phone</label>
-                                <input type="phone" class="form-control" name="stdPhone" >
+                                <input type="phone" class="form-control" value="<?= $results->phone ?>" name="stdPhone" >
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Course</label>
-                                <input type="Course" class="form-control" name="stdCourse" >
+                                <input type="Course" class="form-control" value="<?= $results->course ?>" name="stdCourse" >
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">update</button>
                         </form>
                     </div>
                 </div>

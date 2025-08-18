@@ -36,6 +36,8 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Course</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +56,12 @@
                                         <td><?= $result->email?></td>
                                         <td><?= $result->phone?></td>
                                         <td><?= $result->course?></td>
+                                        <td><a href="student-edit.php?id=<?= $result->ID?>" class="btn btn-primary"> Edit</a></td>
+                                        <td>
+                                            <form action="edit-code.php" method="POST">
+                                              <button type="submit" class="btn btn-danger" name="delete_student" value="<?= $result->ID ?>" >Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php
                                 }
